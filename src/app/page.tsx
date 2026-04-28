@@ -18,6 +18,9 @@ import {
 export default function Home() {
   const [refreshKey, setRefreshKey] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const [activeTab, setActiveTab] = useState<"dashboard" | "checkin" | "debt">(
+    "dashboard"
+  );
 
   useEffect(() => {
     setMounted(true);
@@ -68,10 +71,6 @@ export default function Home() {
           .reduce((sum, l) => sum + l.screenTimeHours, 0) /
         Math.max(1, logs.filter((l) => l.screenTimeHours > 0).length)
       : 0;
-
-  const [activeTab, setActiveTab] = useState<"dashboard" | "checkin" | "debt">(
-    "dashboard"
-  );
 
   return (
     <div className="min-h-screen bg-[#0a0a0a]" key={refreshKey}>
